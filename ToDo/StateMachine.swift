@@ -12,13 +12,16 @@ import SwiftUI
 struct StateMachine: View {
     
     @State private var viewName: String = "Home"
+    @State private var tempJson: String = ""
     var body: some View {
         Group{
             switch viewName{
             case "Home": HomeView(nextView: $viewName)
                     .environment(\.viewName, viewName)
-            case "Add": AddNewView(nextView: $viewName)
+            case "Add": AddNewView(nextView: $viewName
+                                  ,JsonTemp: $tempJson)
                     .environment(\.viewName, viewName)
+                    .environment(\.tempJson, tempJson)
             case "Open": OpenView(nextView: $viewName)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environment(\.viewName, viewName)
@@ -27,6 +30,7 @@ struct StateMachine: View {
             case "Content": ContentView(nextView: $viewName)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environment(\.viewName, viewName)
+                    
             default:
                 EmptyView()
             }

@@ -49,5 +49,6 @@ struct OpenView: View {
 struct OpenView_Previews: PreviewProvider {
     static var previews: some View {
         OpenView(nextView: .constant(""))
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

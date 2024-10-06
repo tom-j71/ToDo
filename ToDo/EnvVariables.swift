@@ -20,3 +20,16 @@ extension EnvironmentValues {
         set { self[ViewNameKey.self] = newValue }
     }
 }
+
+
+//Used to store temporary json file
+struct TempJsonKey: EnvironmentKey {
+    static let defaultValue = ""
+}
+
+extension EnvironmentValues {
+    var tempJson: String {
+        get { self[TempJsonKey.self] }
+        set { self[TempJsonKey.self] = newValue }
+    }
+}

@@ -9,35 +9,48 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+    //Core Data
     @Environment(\.managedObjectContext) private var viewContext
-
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
-    
+    //Switching between different views
     @Environment(\.viewName) var viewName
     @Binding var nextView: String
-
+    //Modal view
+    @State private var isPresentingAddNewForm = false
+    //Variables
+    @Environment(\.tempJson) var tempJson
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(items) { item in
+                ForEach(Schedule.fromJson(jsonString: tempJson)!.todos) { todo in
                     NavigationLink {
-                        Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                        AddNewFormView(schedule: todo.name, startDate: todo.startDate, endDate: todo.endDate, detail: todo.description, isPresented: $isPresentingAddNewForm)
+                            
                     } label: {
-                        Text(item.timestamp!, formatter: itemFormatter)
+                        HStack{
+                            Text(todo.name)
+                            Text(todo.startDate, formatter: itemFormatter)
+                            Text(todo.endDate, formatter: itemFormatter)
+                        }
+                        
                     }
                 }
                 .onDelete(perform: deleteItems)
             }
-            .navigationBarTitle("Name", displayMode: .inline)
+            .navigationBarTitle(Schedule.fromJson(jsonString: tempJson)!.name, displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
-                    Button(action: addItem) {
+                    Button(action: {
+                        self.isPresentingAddNewForm.toggle()
+                        //addItem()
+                    }) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -47,6 +60,8 @@ struct ContentView: View {
                         self.nextView = "Open"
                     }
                 }
+            }.sheet(isPresented: $isPresentingAddNewForm) {
+                AddNewFormView(isPresented: $isPresentingAddNewForm)
             }
             
         }.navigationViewStyle(.stack)
