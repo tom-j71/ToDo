@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+
+
 struct StateMachine: View {
     
     @State private var viewName: String = "Home"
@@ -15,9 +17,16 @@ struct StateMachine: View {
             switch viewName{
             case "Home": HomeView(nextView: $viewName)
                     .environment(\.viewName, viewName)
-            case "Add": AddNewView()
-            case "Open": EmptyView()
-            case "Settings": EmptyView()
+            case "Add": AddNewView(nextView: $viewName)
+                    .environment(\.viewName, viewName)
+            case "Open": OpenView(nextView: $viewName)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environment(\.viewName, viewName)
+            case "Settings": SettingView(nextView: $viewName)
+                    .environment(\.viewName, viewName)
+            case "Content": ContentView(nextView: $viewName)
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environment(\.viewName, viewName)
             default:
                 EmptyView()
             }

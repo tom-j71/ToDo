@@ -11,12 +11,14 @@
 		9316DA1B2CB24E7B0028885C /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316DA1A2CB24E7A0028885C /* StateMachine.swift */; };
 		9316DA1D2CB24FF60028885C /* AddNewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316DA1C2CB24FF60028885C /* AddNewView.swift */; };
 		9316DA1F2CB253530028885C /* EnvVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316DA1E2CB253530028885C /* EnvVariables.swift */; };
+		932718472CB267CE00C62DCA /* OpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932718462CB267CD00C62DCA /* OpenView.swift */; };
+		932718492CB267E500C62DCA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932718482CB267E500C62DCA /* SettingView.swift */; };
 		9329E41B2CABA52000E68117 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E41A2CABA52000E68117 /* ToDoApp.swift */; };
 		9329E41D2CABA52000E68117 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E41C2CABA52000E68117 /* ContentView.swift */; };
 		9329E41F2CABA52400E68117 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9329E41E2CABA52400E68117 /* Assets.xcassets */; };
 		9329E4222CABA52400E68117 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9329E4212CABA52400E68117 /* Preview Assets.xcassets */; };
 		9329E4242CABA52400E68117 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E4232CABA52400E68117 /* Persistence.swift */; };
-		9329E4272CABA52400E68117 /* FM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9329E4252CABA52400E68117 /* FM.xcdatamodeld */; };
+		9329E4272CABA52400E68117 /* ToDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9329E4252CABA52400E68117 /* ToDo.xcdatamodeld */; };
 		9329E4322CABA52500E68117 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E4312CABA52500E68117 /* ToDoTests.swift */; };
 		9329E43C2CABA52500E68117 /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E43B2CABA52500E68117 /* ToDoUITests.swift */; };
 		9329E43E2CABA52500E68117 /* ToDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E43D2CABA52500E68117 /* ToDoUITestsLaunchTests.swift */; };
@@ -44,6 +46,8 @@
 		9316DA1A2CB24E7A0028885C /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		9316DA1C2CB24FF60028885C /* AddNewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewView.swift; sourceTree = "<group>"; };
 		9316DA1E2CB253530028885C /* EnvVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVariables.swift; sourceTree = "<group>"; };
+		932718462CB267CD00C62DCA /* OpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenView.swift; sourceTree = "<group>"; };
+		932718482CB267E500C62DCA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
 		9329E4172CABA52000E68117 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E41A2CABA52000E68117 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
 		9329E41C2CABA52000E68117 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -110,13 +114,15 @@
 				9329E41A2CABA52000E68117 /* ToDoApp.swift */,
 				9316DA1E2CB253530028885C /* EnvVariables.swift */,
 				9329E41C2CABA52000E68117 /* ContentView.swift */,
+				9316DA1C2CB24FF60028885C /* AddNewView.swift */,
 				9316DA1A2CB24E7A0028885C /* StateMachine.swift */,
 				9316DA182CB23AC70028885C /* HomeView.swift */,
-				9316DA1C2CB24FF60028885C /* AddNewView.swift */,
+				932718462CB267CD00C62DCA /* OpenView.swift */,
+				932718482CB267E500C62DCA /* SettingView.swift */,
 				9329E41E2CABA52400E68117 /* Assets.xcassets */,
 				9329E4232CABA52400E68117 /* Persistence.swift */,
 				9329E4282CABA52400E68117 /* Info.plist */,
-				9329E4252CABA52400E68117 /* FM.xcdatamodeld */,
+				9329E4252CABA52400E68117 /* ToDo.xcdatamodeld */,
 				9329E4202CABA52400E68117 /* Preview Content */,
 			);
 			path = ToDo;
@@ -278,12 +284,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				9329E4242CABA52400E68117 /* Persistence.swift in Sources */,
+				932718492CB267E500C62DCA /* SettingView.swift in Sources */,
+				932718472CB267CE00C62DCA /* OpenView.swift in Sources */,
 				9316DA1B2CB24E7B0028885C /* StateMachine.swift in Sources */,
 				9316DA1D2CB24FF60028885C /* AddNewView.swift in Sources */,
 				9329E41D2CABA52000E68117 /* ContentView.swift in Sources */,
 				9329E41B2CABA52000E68117 /* ToDoApp.swift in Sources */,
 				9316DA192CB23AC80028885C /* HomeView.swift in Sources */,
-				9329E4272CABA52400E68117 /* FM.xcdatamodeld in Sources */,
+				9329E4272CABA52400E68117 /* ToDo.xcdatamodeld in Sources */,
 				9316DA1F2CB253530028885C /* EnvVariables.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -611,13 +619,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		9329E4252CABA52400E68117 /* FM.xcdatamodeld */ = {
+		9329E4252CABA52400E68117 /* ToDo.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
 				9329E4262CABA52400E68117 /* ToDo.xcdatamodel */,
 			);
 			currentVersion = 9329E4262CABA52400E68117 /* ToDo.xcdatamodel */;
-			path = FM.xcdatamodeld;
+			path = ToDo.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

@@ -15,6 +15,9 @@ struct ContentView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
         animation: .default)
     private var items: FetchedResults<Item>
+    
+    @Environment(\.viewName) var viewName
+    @Binding var nextView: String
 
     var body: some View {
         NavigationView {
@@ -28,6 +31,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
+            .navigationBarTitle("Name", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -37,9 +41,15 @@ struct ContentView: View {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Back") {
+                        // Handle back action
+                        self.nextView = "Open"
+                    }
+                }
             }
-            Text("Select an item")
-        }
+            
+        }.navigationViewStyle(.stack)
     }
 
     private func addItem() {
@@ -83,6 +93,8 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ContentView(nextView: .constant(""))
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+            .previewInterfaceOrientation(.landscapeLeft)
     }
 }

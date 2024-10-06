@@ -1,5 +1,5 @@
 //
-//  AddNewView.swift
+//  SettingView.swift
 //  ToDo
 //
 //  Created by 汤子晏 on 2024/10/6.
@@ -7,22 +7,20 @@
 
 import SwiftUI
 
-
-struct AddNewView: View {
+struct SettingView: View {
     @State private var name: String = ""
-    @State private var isImportant: Bool = false
+    
     @Environment(\.viewName) var viewName
     @Binding var nextView: String
     var body: some View {
         NavigationView {
             Form {
-                Section(header: Text("Details")) {
-                    TextField("Name", text: $name)
+                Section(header: Text("Language")) {
+                    TextField("Coming soon", text: $name)
                     
-                    Toggle("Is Important", isOn: $isImportant)
                 }
             }
-            .navigationBarTitle("Add New", displayMode: .inline)
+            .navigationBarTitle("Settings", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
@@ -30,12 +28,7 @@ struct AddNewView: View {
                         self.nextView = "Home"
                     }
                 }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Next") {
-                        // Handle next action
-                        self.nextView = "Content"
-                    }
-                }
+                
             }
             .padding()
         }
@@ -43,9 +36,9 @@ struct AddNewView: View {
     }
 }
 
-struct AddNewView_Previews: PreviewProvider {
+struct SettingView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewView(nextView: .constant(""))
+        SettingView(nextView: .constant(""))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
