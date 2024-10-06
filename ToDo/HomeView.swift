@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct HomeView: View {
+    @Environment(\.viewName) var viewName
+    @Binding var nextView: String
     var body: some View {
         ZStack {
             Image("BG")
@@ -15,21 +17,22 @@ struct HomeView: View {
                 .ignoresSafeArea()
                 
                 
-            HStack(spacing: 100) {
+            HStack(spacing: 80) {
                 VStack(alignment: .center) {
                     LabelView()
                         .padding(.bottom,120)
                     VStack(spacing:70) {
-                        AddNewButtonView()
-                        OpenButtonView()
-                        SettingButtonView()
+                        AddNewButtonView(viewName: $nextView)
+                        OpenButtonView(viewName: $nextView)
+                        SettingButtonView(viewName: $nextView)
                                         
                     }.padding(.bottom,60)
                     
-                }
+                }.padding(.leading,20)
                 PreviewView()
                 
             }
+            
             
         }
     }
@@ -44,9 +47,15 @@ private struct LabelView: View{
     }
 }
 
-struct AddNewButtonView: View {
+private struct AddNewButtonView: View {
+    @Binding var viewName : String
     var body: some View {
         Button(action: {
+            withAnimation {
+                self.viewName = "Add"
+            }
+            
+            
         // Add New action here
         }) {
             HStack {
@@ -61,9 +70,14 @@ struct AddNewButtonView: View {
     }
 }
 
-struct OpenButtonView: View{
+private struct OpenButtonView: View{
+    @Binding var viewName : String
     var body: some View{
         Button(action: {
+            withAnimation {
+                viewName = "Open"
+            }
+            
             // Open File action here
         }) {
             HStack {
@@ -79,10 +93,12 @@ struct OpenButtonView: View{
     }
 }
 
-struct SettingButtonView: View{
+private struct SettingButtonView: View{
+    @Binding var viewName : String
     var body: some View{
         Button(action: {
             // Settings action here
+            viewName = "Settings"
         }) {
             HStack {
                 Image(systemName: "gearshape.2.fill")
@@ -96,14 +112,14 @@ struct SettingButtonView: View{
     }
 }
 
-struct PreviewView: View{
+private struct PreviewView: View{
     var body: some View{
         
         Color.white
             .frame(width: 450, height: 350)
             .border(.gray
                     .opacity(0.3)
-                    ,width: 20)
+                    ,width: 15)
         
             
             .cornerRadius(8)
@@ -112,8 +128,9 @@ struct PreviewView: View{
 }
 
 struct HomeView_Previews: PreviewProvider {
+    
     static var previews: some View {
-        HomeView()
+        HomeView(nextView: .constant(""))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
