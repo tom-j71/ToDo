@@ -22,11 +22,11 @@ struct ContentView: View {
     @State private var isPresentingAddNewForm = false
     //Variables
     @Environment(\.tempJson) var tempJson
-    
+    @Binding var jsonTemp: String
     var body: some View {
         NavigationView {
             List {
-                ForEach(Schedule.fromJson(jsonString: tempJson)!.todos) { todo in
+                ForEach(Schedule.fromJson(jsonString: jsonTemp)?.todos ?? Schedule(name: "", isImportant: true).todos) { todo in
                     NavigationLink {
                         AddNewFormView(schedule: todo.name, startDate: todo.startDate, endDate: todo.endDate, detail: todo.description, isPresented: $isPresentingAddNewForm)
                             
@@ -41,7 +41,7 @@ struct ContentView: View {
                 }
                 .onDelete(perform: deleteItems)
             }
-            .navigationBarTitle(Schedule.fromJson(jsonString: tempJson)!.name, displayMode: .inline)
+            .navigationBarTitle(Schedule.fromJson(jsonString: jsonTemp)?.name ?? "EmptyName", displayMode: .inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -108,7 +108,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(nextView: .constant(""))
+        ContentView(nextView: .constant(""), jsonTemp: .constant(""))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .previewInterfaceOrientation(.landscapeLeft)
     }

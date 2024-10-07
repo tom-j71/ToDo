@@ -27,9 +27,11 @@ struct StateMachine: View {
                     .environment(\.viewName, viewName)
             case "Settings": SettingView(nextView: $viewName)
                     .environment(\.viewName, viewName)
-            case "Content": ContentView(nextView: $viewName)
+            case "Content": ContentView(nextView: $viewName,
+                                        jsonTemp: $tempJson)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .environment(\.viewName, viewName)
+                    .environment(\.tempJson, tempJson)
                     
             default:
                 EmptyView()
