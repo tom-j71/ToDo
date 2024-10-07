@@ -11,12 +11,12 @@ import SwiftUI
 struct AddNewView: View {
     @State private var name: String = ""
     @State private var isImportant: Bool = false
-    @Environment(\.viewName) var viewName
     @Binding var nextView: String
-    @Environment(\.tempJson) var tempJson
-    @Binding var JsonTemp: String
+    
+    @Binding var JsonTemp: Schedule
     var body: some View {
         NavigationView {
+            
             Form {
                 Section(header: Text("Details")) {
                     TextField("Name", text: $name)
@@ -25,7 +25,9 @@ struct AddNewView: View {
                     
                 }
             }
+            
             .navigationBarTitle("Add New", displayMode: .inline)
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
@@ -36,10 +38,9 @@ struct AddNewView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Next") {
                         // Handle next action
-                        let newSchedule = Schedule(name: name, isImportant: isImportant)
-                        let newScheduleString = newSchedule.toJson()
                         
-                        self.JsonTemp = newScheduleString!
+                        
+                        self.JsonTemp = Schedule(name: name, isImportant: isImportant)
                         self.nextView = "Content"
                     }
                 }
@@ -56,7 +57,7 @@ struct AddNewView: View {
 
 struct AddNewView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewView(nextView: .constant(""), JsonTemp: .constant(""))
+        AddNewView(nextView: .constant(""), JsonTemp: .constant(Schedule(name: "", isImportant: false)))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

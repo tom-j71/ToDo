@@ -9,8 +9,6 @@ import SwiftUI
 
 struct SettingView: View {
     @State private var name: String = ""
-    
-    @Environment(\.viewName) var viewName
     @Binding var nextView: String
     var body: some View {
         NavigationView {

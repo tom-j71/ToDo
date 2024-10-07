@@ -16,19 +16,20 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     //Switching between different views
-    @Environment(\.viewName) var viewName
+    
     @Binding var nextView: String
     //Modal view
     @State private var isPresentingAddNewForm = false
     //Variables
-    @Environment(\.tempJson) var tempJson
-    @Binding var jsonTemp: String
+    
+    @Binding var jsonTemp: Schedule
+    
     var body: some View {
         NavigationView {
             List {
-                ForEach(Schedule.fromJson(jsonString: jsonTemp)?.todos ?? Schedule(name: "", isImportant: true).todos) { todo in
+                ForEach(jsonTemp.todos ) { todo in
                     NavigationLink {
-                        AddNewFormView(schedule: todo.name, startDate: todo.startDate, endDate: todo.endDate, detail: todo.description, isPresented: $isPresentingAddNewForm)
+                        EmptyView()
                             
                     } label: {
                         HStack{
@@ -40,18 +41,23 @@ struct ContentView: View {
                     }
                 }
                 .onDelete(perform: deleteItems)
+                
             }
-            .navigationBarTitle(Schedule.fromJson(jsonString: jsonTemp)?.name ?? "EmptyName", displayMode: .inline)
+            .navigationBarTitle(jsonTemp.name , displayMode: .inline)
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
                     Button(action: {
+                        
                         self.isPresentingAddNewForm.toggle()
+                        
                         //addItem()
                     }) {
                         Label("Add Item", systemImage: "plus")
+                        
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
@@ -61,8 +67,11 @@ struct ContentView: View {
                     }
                 }
             }.sheet(isPresented: $isPresentingAddNewForm) {
-                AddNewFormView(isPresented: $isPresentingAddNewForm)
+                AddNewFormView(isPresented: $isPresentingAddNewForm, sch: $jsonTemp)
+                    
+                    
             }
+            
             
         }.navigationViewStyle(.stack)
     }
@@ -108,7 +117,7 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(nextView: .constant(""), jsonTemp: .constant(""))
+        ContentView(nextView: .constant(""), jsonTemp: .constant(Schedule(name: "", isImportant: false)))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .previewInterfaceOrientation(.landscapeLeft)
     }

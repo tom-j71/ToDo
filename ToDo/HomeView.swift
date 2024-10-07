@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HomeView: View {
-    @Environment(\.viewName) var viewName
+    
     @Binding var nextView: String
     var body: some View {
         ZStack {

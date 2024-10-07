@@ -1,18 +1,18 @@
 //
-//  AddNewFormView.swift
+//  DetailView.swift
 //  ToDo
 //
-//  Created by 汤子晏 on 2024/10/6.
+//  Created by 汤子晏 on 2024/10/7.
 //
 
 import SwiftUI
 
-struct AddNewFormView: View {
+struct DetailView: View {
     @State var schedule: String = ""
     @State var startDate = Date()
     @State var endDate = Date()
     @State var detail: String = ""
-    @Binding var isPresented : Bool
+    
     var body: some View {
         
         NavigationView {
@@ -45,28 +45,14 @@ struct AddNewFormView: View {
             }
             .navigationBarTitle("Add New Form", displayMode: .inline)
             
-            .toolbar {
-                ToolbarItem {
-                    Button("Done") {
-                        // Handle back action
-                        self.isPresented = false
-                    }
-                }
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Back") {
-                        // Handle back action
-                        self.isPresented = false
-                    }
-                }
-            }
+            
         }.navigationViewStyle(.stack)
     }
 }
 
-struct AddNewFormView_Previews: PreviewProvider {
+struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        AddNewFormView(isPresented: .constant(true))
+        DetailView()
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }
-

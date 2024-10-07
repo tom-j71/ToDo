@@ -23,11 +23,11 @@ struct Todo: Identifiable {
     }
 }
 
-class Schedule: Identifiable {
+class Schedule: Identifiable, ObservableObject {
     let id: UUID
     var name: String
     var isImportant: Bool
-    var todos: [Todo]
+    @Published var todos: [Todo]
     
     init(id: UUID = UUID(), name: String, isImportant: Bool, todos: [Todo] = []) {
         self.id = id

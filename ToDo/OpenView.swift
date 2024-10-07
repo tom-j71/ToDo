@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct OpenView: View {
-    @Environment(\.viewName) var viewName
     @Binding var nextView: String
     var body: some View {
         NavigationView {

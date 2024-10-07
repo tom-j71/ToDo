@@ -24,6 +24,7 @@
 		9329E4322CABA52500E68117 /* ToDoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E4312CABA52500E68117 /* ToDoTests.swift */; };
 		9329E43C2CABA52500E68117 /* ToDoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E43B2CABA52500E68117 /* ToDoUITests.swift */; };
 		9329E43E2CABA52500E68117 /* ToDoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E43D2CABA52500E68117 /* ToDoUITestsLaunchTests.swift */; };
+		93A710BF2CB3955300385867 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93A710BE2CB3955300385867 /* DetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		9329E4372CABA52500E68117 /* ToDoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ToDoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E43B2CABA52500E68117 /* ToDoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITests.swift; sourceTree = "<group>"; };
 		9329E43D2CABA52500E68117 /* ToDoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		93A710BE2CB3955300385867 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,17 +118,16 @@
 			isa = PBXGroup;
 			children = (
 				9329E41A2CABA52000E68117 /* ToDoApp.swift */,
-				9316DA1E2CB253530028885C /* EnvVariables.swift */,
-				9329E41C2CABA52000E68117 /* ContentView.swift */,
-				9327184C2CB27B6300C62DCA /* DataFile.swift */,
-				9327184A2CB2733700C62DCA /* AddNewFormView.swift */,
-				9316DA1C2CB24FF60028885C /* AddNewView.swift */,
 				9316DA1A2CB24E7A0028885C /* StateMachine.swift */,
 				9316DA182CB23AC70028885C /* HomeView.swift */,
+				9316DA1C2CB24FF60028885C /* AddNewView.swift */,
 				932718462CB267CD00C62DCA /* OpenView.swift */,
+				93A710C02CB3958900385867 /* Contents */,
 				932718482CB267E500C62DCA /* SettingView.swift */,
-				9329E41E2CABA52400E68117 /* Assets.xcassets */,
+				9316DA1E2CB253530028885C /* EnvVariables.swift */,
+				9327184C2CB27B6300C62DCA /* DataFile.swift */,
 				9329E4232CABA52400E68117 /* Persistence.swift */,
+				9329E41E2CABA52400E68117 /* Assets.xcassets */,
 				9329E4282CABA52400E68117 /* Info.plist */,
 				9329E4252CABA52400E68117 /* ToDo.xcdatamodeld */,
 				9329E4202CABA52400E68117 /* Preview Content */,
@@ -157,6 +158,16 @@
 				9329E43D2CABA52500E68117 /* ToDoUITestsLaunchTests.swift */,
 			);
 			path = ToDoUITests;
+			sourceTree = "<group>";
+		};
+		93A710C02CB3958900385867 /* Contents */ = {
+			isa = PBXGroup;
+			children = (
+				9329E41C2CABA52000E68117 /* ContentView.swift */,
+				93A710BE2CB3955300385867 /* DetailView.swift */,
+				9327184A2CB2733700C62DCA /* AddNewFormView.swift */,
+			);
+			path = Contents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,6 +307,7 @@
 				9316DA1B2CB24E7B0028885C /* StateMachine.swift in Sources */,
 				9316DA1D2CB24FF60028885C /* AddNewView.swift in Sources */,
 				9327184B2CB2733700C62DCA /* AddNewFormView.swift in Sources */,
+				93A710BF2CB3955300385867 /* DetailView.swift in Sources */,
 				9329E41D2CABA52000E68117 /* ContentView.swift in Sources */,
 				9329E41B2CABA52000E68117 /* ToDoApp.swift in Sources */,
 				9316DA192CB23AC80028885C /* HomeView.swift in Sources */,
