@@ -8,43 +8,66 @@
 import SwiftUI
 
 struct DetailView: View {
-    @State var schedule: String = ""
-    @State var startDate = Date()
-    @State var endDate = Date()
-    @State var detail: String = ""
+    @Binding var todo: Todo
+    @Binding var nextView: String
+    @Binding var jsonTemp: Schedule
     
     var body: some View {
         
         NavigationView {
             Form {
                 Section(header: Text("Schedule Name")) {
-                    TextField("Enter schedule name", text: $schedule)
+                    TextField("Enter schedule name", text: $todo.name)
                 }
-                
+
                 Section(header: Text("Date Range")) {
-                    DatePicker("Start Date", selection: $startDate, displayedComponents: .date)
-                        .onChange(of: startDate) { _ in
+                    DatePicker("Start Date", selection: $todo.startDate, displayedComponents: .date)
+                        .onChange(of: todo.startDate) { _ in
                             // Ensure end date is not before start date
-                            if endDate < startDate {
-                                endDate = startDate
+                            if todo.endDate < todo.startDate {
+                                todo.endDate = todo.startDate
                             }
                         }
-                    
-                    DatePicker("End Date", selection: $endDate, in: Date()..., displayedComponents: .date)
-                        .onChange(of: endDate) { _ in
-                            if endDate < startDate {
-                                startDate = endDate
+
+                    DatePicker("End Date", selection: $todo.endDate, in: Date()..., displayedComponents: .date)
+                        .onChange(of: todo.endDate) { _ in
+                            if todo.endDate < todo.startDate {
+                                todo.startDate = todo.endDate
                             }
                         }
                 }
-                
+
                 Section(header: Text("Details")) {
-                    TextEditor(text: $detail)
+                    TextEditor(text: $todo.description)
                         .frame(height: 100)
                 }
             }
             .navigationBarTitle("Add New Form", displayMode: .inline)
-            
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button("Done") {
+                        // Handle back action
+                        let index = jsonTemp.todos.firstIndex { td in
+                            td.id == todo.id
+                        }
+                        if let index = index{
+                            jsonTemp.todos[index] = todo
+                        }else{
+                            jsonTemp.todos.append(todo)
+                        }
+                        
+                        self.nextView = "Content"
+                    }
+                    
+                }
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Back") {
+                        // Handle back action
+                        
+                        self.nextView = "Content"
+                    }
+                }
+            }
             
         }.navigationViewStyle(.stack)
     }
@@ -52,7 +75,9 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView()
+        DetailView(todo: .constant(Todo(name: "", startDate: Date(), endDate: Date(), description: "")),
+                   nextView: .constant(""),
+                   jsonTemp: .constant(Schedule(name: "", isImportant: false)))
             .previewInterfaceOrientation(.landscapeLeft)
     }
 }

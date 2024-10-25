@@ -12,7 +12,6 @@ struct AddNewView: View {
     @State private var name: String = ""
     @State private var isImportant: Bool = false
     @Binding var nextView: String
-    
     @Binding var JsonTemp: Schedule
     var body: some View {
         NavigationView {
@@ -38,21 +37,15 @@ struct AddNewView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Next") {
                         // Handle next action
-                        
-                        
                         self.JsonTemp = Schedule(name: name, isImportant: isImportant)
                         self.nextView = "Content"
                     }
                 }
             }
             .padding()
-            
-            
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }
-    
-    
 }
 
 struct AddNewView_Previews: PreviewProvider {

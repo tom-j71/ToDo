@@ -21,16 +21,16 @@ struct ContentView: View {
     //Modal view
     @State private var isPresentingAddNewForm = false
     //Variables
-    
+    @Binding var tempTodo: Todo
     @Binding var jsonTemp: Schedule
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(jsonTemp.todos ) { todo in
-                    NavigationLink {
-                        EmptyView()
-                            
+                ForEach(jsonTemp.todos,id:\.id ) { todo in
+                    Button {
+                        self.tempTodo = todo
+                        self.nextView = "Detail"
                     } label: {
                         HStack{
                             Text(todo.name)
@@ -47,12 +47,14 @@ struct ContentView: View {
             
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+                    //EditButton()
                 }
                 ToolbarItem {
                     Button(action: {
+                        self.tempTodo = Todo(name: "Schedule", startDate: Date(), endDate: Date(), description: "Empty")
+                        self.nextView = "Detail"
                         
-                        self.isPresentingAddNewForm.toggle()
+//                        self.isPresentingAddNewForm.toggle()
                         
                         //addItem()
                     }) {
@@ -67,8 +69,8 @@ struct ContentView: View {
                     }
                 }
             }.sheet(isPresented: $isPresentingAddNewForm) {
-                AddNewFormView(isPresented: $isPresentingAddNewForm, sch: $jsonTemp)
-                    
+//                AddNewFormView(isPresented: $isPresentingAddNewForm, sch: $jsonTemp)
+                
                     
             }
             
@@ -117,7 +119,9 @@ private let itemFormatter: DateFormatter = {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView(nextView: .constant(""), jsonTemp: .constant(Schedule(name: "", isImportant: false)))
+        ContentView(nextView: .constant(""),
+                    tempTodo: .constant(Todo(name: "", startDate: Date(), endDate: Date(), description: "")),
+                    jsonTemp: .constant(Schedule(name: "", isImportant: false)))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
             .previewInterfaceOrientation(.landscapeLeft)
     }

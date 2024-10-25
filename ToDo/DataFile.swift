@@ -21,6 +21,7 @@ struct Todo: Identifiable {
         self.endDate = endDate
         self.description = description
     }
+    
 }
 
 class Schedule: Identifiable, ObservableObject {
@@ -28,7 +29,6 @@ class Schedule: Identifiable, ObservableObject {
     var name: String
     var isImportant: Bool
     @Published var todos: [Todo]
-    
     init(id: UUID = UUID(), name: String, isImportant: Bool, todos: [Todo] = []) {
         self.id = id
         self.name = name

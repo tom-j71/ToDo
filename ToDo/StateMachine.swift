@@ -10,9 +10,9 @@ import SwiftUI
 
 
 struct StateMachine: View {
-    
     @State private var viewName: String = "Home"
     @State private var tempJson: Schedule = Schedule(name: "", isImportant: false)
+    @State private var tempTodo: Todo = Todo(name: "", startDate: Date(), endDate: Date(), description: "")
     var body: some View {
         Group{
             switch viewName{
@@ -26,9 +26,10 @@ struct StateMachine: View {
                     
             case "Settings": SettingView(nextView: $viewName)
                     
-            case "Content": ContentView(nextView: $viewName,
+            case "Content": ContentView(nextView: $viewName, tempTodo: $tempTodo,
                                         jsonTemp: $tempJson)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            case "Detail": DetailView(todo: $tempTodo, nextView: $viewName, jsonTemp: $tempJson)
                     
                     
             default:

@@ -13,7 +13,6 @@
 		9316DA1F2CB253530028885C /* EnvVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9316DA1E2CB253530028885C /* EnvVariables.swift */; };
 		932718472CB267CE00C62DCA /* OpenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932718462CB267CD00C62DCA /* OpenView.swift */; };
 		932718492CB267E500C62DCA /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 932718482CB267E500C62DCA /* SettingView.swift */; };
-		9327184B2CB2733700C62DCA /* AddNewFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327184A2CB2733700C62DCA /* AddNewFormView.swift */; };
 		9327184D2CB27B6300C62DCA /* DataFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9327184C2CB27B6300C62DCA /* DataFile.swift */; };
 		9329E41B2CABA52000E68117 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E41A2CABA52000E68117 /* ToDoApp.swift */; };
 		9329E41D2CABA52000E68117 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9329E41C2CABA52000E68117 /* ContentView.swift */; };
@@ -51,7 +50,6 @@
 		9316DA1E2CB253530028885C /* EnvVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvVariables.swift; sourceTree = "<group>"; };
 		932718462CB267CD00C62DCA /* OpenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenView.swift; sourceTree = "<group>"; };
 		932718482CB267E500C62DCA /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingView.swift; sourceTree = "<group>"; };
-		9327184A2CB2733700C62DCA /* AddNewFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewFormView.swift; sourceTree = "<group>"; };
 		9327184C2CB27B6300C62DCA /* DataFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFile.swift; sourceTree = "<group>"; };
 		9329E4172CABA52000E68117 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9329E41A2CABA52000E68117 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			children = (
 				9329E41C2CABA52000E68117 /* ContentView.swift */,
 				93A710BE2CB3955300385867 /* DetailView.swift */,
-				9327184A2CB2733700C62DCA /* AddNewFormView.swift */,
 			);
 			path = Contents;
 			sourceTree = "<group>";
@@ -306,7 +303,6 @@
 				9327184D2CB27B6300C62DCA /* DataFile.swift in Sources */,
 				9316DA1B2CB24E7B0028885C /* StateMachine.swift in Sources */,
 				9316DA1D2CB24FF60028885C /* AddNewView.swift in Sources */,
-				9327184B2CB2733700C62DCA /* AddNewFormView.swift in Sources */,
 				93A710BF2CB3955300385867 /* DetailView.swift in Sources */,
 				9329E41D2CABA52000E68117 /* ContentView.swift in Sources */,
 				9329E41B2CABA52000E68117 /* ToDoApp.swift in Sources */,
