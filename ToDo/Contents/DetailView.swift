@@ -29,7 +29,7 @@ struct DetailView: View {
                             }
                         }
 
-                    DatePicker("End Date", selection: $todo.endDate, in: Date()..., displayedComponents: .date)
+                    DatePicker("End Date", selection: $todo.endDate, displayedComponents: .date)
                         .onChange(of: todo.endDate) { _ in
                             if todo.endDate < todo.startDate {
                                 todo.startDate = todo.endDate

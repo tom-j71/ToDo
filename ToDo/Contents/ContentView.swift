@@ -16,7 +16,6 @@ struct ContentView: View {
         animation: .default)
     private var items: FetchedResults<Item>
     //Switching between different views
-    
     @Binding var nextView: String
     //Modal view
     @State private var isPresentingAddNewForm = false
@@ -34,8 +33,11 @@ struct ContentView: View {
                     } label: {
                         HStack{
                             Text(todo.name)
+                                .foregroundColor(.black)
                             Text(todo.startDate, formatter: itemFormatter)
+                                .foregroundColor(.black)
                             Text(todo.endDate, formatter: itemFormatter)
+                                .foregroundColor(.black)
                         }
                         
                     }
@@ -51,7 +53,7 @@ struct ContentView: View {
                 }
                 ToolbarItem {
                     Button(action: {
-                        self.tempTodo = Todo(name: "Schedule", startDate: Date(), endDate: Date(), description: "Empty")
+                        self.tempTodo = Todo(name: "Schedule", startDate: Date(), endDate: Date(), description: "")
                         self.nextView = "Detail"
                         
 //                        self.isPresentingAddNewForm.toggle()

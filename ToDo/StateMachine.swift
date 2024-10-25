@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-
-
 struct StateMachine: View {
     @State private var viewName: String = "Home"
     @State private var tempJson: Schedule = Schedule(name: "", isImportant: false)
@@ -16,6 +14,7 @@ struct StateMachine: View {
     var body: some View {
         Group{
             switch viewName{
+                
             case "Home": HomeView(nextView: $viewName)
                     
             case "Add": AddNewView(nextView: $viewName

@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+//TODO: The duplicated TodoList name checker hasn't been added
 
 struct AddNewView: View {
     @State private var name: String = ""

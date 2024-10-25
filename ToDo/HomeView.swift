@@ -8,14 +8,12 @@
 import SwiftUI
 
 struct HomeView: View {
-    
     @Binding var nextView: String
     var body: some View {
         ZStack {
             Image("BG")
                 .resizable()
                 .ignoresSafeArea()
-                
                 
             HStack(spacing: 80) {
                 VStack(alignment: .center) {
@@ -29,6 +27,8 @@ struct HomeView: View {
                     }.padding(.bottom,60)
                     
                 }.padding(.leading,20)
+                
+                //TODO: The Preview hasn't been added yet
                 PreviewView()
                 
             }
@@ -98,7 +98,10 @@ private struct SettingButtonView: View{
     var body: some View{
         Button(action: {
             // Settings action here
-            viewName = "Settings"
+            withAnimation {
+                viewName = "Settings"
+            }
+            
         }) {
             HStack {
                 Image(systemName: "gearshape.2.fill")

@@ -23,7 +23,10 @@ struct SettingView: View {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
                         // Handle back action
-                        self.nextView = "Home"
+                        withAnimation {
+                            self.nextView = "Home"
+                        }
+                        
                     }
                 }
                 

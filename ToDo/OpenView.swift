@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//TODO: Incompleted file
+
 struct OpenView: View {
     @Binding var nextView: String
     var body: some View {
