@@ -22,6 +22,7 @@ struct ContentView: View {
     //Variables
     @Binding var tempTodo: Todo
     @Binding var jsonTemp: Schedule
+    @State private var isEditing = false
     
     var body: some View {
         NavigationView {
@@ -39,61 +40,32 @@ struct ContentView: View {
                             Text(todo.endDate, formatter: itemFormatter)
                                 .foregroundColor(.black)
                         }
-                        
                     }
                 }
                 .onDelete(perform: deleteItems)
-                
             }
             .navigationBarTitle(jsonTemp.name , displayMode: .inline)
-            
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    //EditButton()
+                    EditButton()
                 }
-                ToolbarItem {
+                ToolbarItem(placement: .navigationBarTrailing) {
                     Button(action: {
                         self.tempTodo = Todo(name: "Schedule", startDate: Date(), endDate: Date(), description: "")
                         self.nextView = "Detail"
-                        
-//                        self.isPresentingAddNewForm.toggle()
-                        
-                        //addItem()
                     }) {
                         Label("Add Item", systemImage: "plus")
-                        
                     }
                 }
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button("Back") {
-                        // Handle back action
                         self.nextView = "Open"
                     }
                 }
-            }.sheet(isPresented: $isPresentingAddNewForm) {
-//                AddNewFormView(isPresented: $isPresentingAddNewForm, sch: $jsonTemp)
-                
-                    
             }
-            
-            
-        }.navigationViewStyle(.stack)
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+            .environment(\.editMode, .constant(self.isEditing ? EditMode.active : EditMode.inactive))
         }
+        .navigationViewStyle(.stack)
     }
 
     private func deleteItems(offsets: IndexSet) {
@@ -103,8 +75,6 @@ struct ContentView: View {
             do {
                 try viewContext.save()
             } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
